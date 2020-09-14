@@ -5,5 +5,5 @@ Here, we propose a unsupervised restoration method via cataract-like image simul
 
 The code of this study will be released soon.
 
-## Result
-![Fig](Images/Output.png)
+** Result: **
+![Output](Images/Output.png)

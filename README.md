@@ -1,7 +1,7 @@
 # Restoration-of-Cataract-Images-via-Domain-Adaptation
 There is little access to large datasets of cataract images paired with their corresponding clear ones. Therefore, it is unlikely to build a restoration model for cataract images through supervised learning.
 
-Here, we propose a unsupervised restoration method via cataract-like image simulation and domain adaptation.
+Here, we propose an unsupervised restoration method via cataract-like image simulation and domain adaptation.
 
 The code of this study will be released soon.
 

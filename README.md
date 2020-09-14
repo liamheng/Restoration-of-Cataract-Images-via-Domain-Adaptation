@@ -7,4 +7,4 @@ The code of this study will be released soon.
 
 **Result：**
 ![Output](Images/Output.png)
-A comparison of the restored fundus images. (a) cataract image. (b) clear fundus image after surgery. (c) dark channel prior. (d) dark channel prior. (e) pix2pix. (f) CycleGAN. (g) the proposed method.
+A comparison of the restored fundus images. (a) cataract image. (b) clear fundus image after surgery. (c) dark channel prior. (d) SGRIF. (e) pix2pix. (f) CycleGAN. (g) the proposed method.

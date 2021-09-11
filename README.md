@@ -42,20 +42,15 @@ http://localhost:8097/
 ### train
 
 ```
-python train.py --dataroot ./datasets/cataract_0830 --name train_project --model pixDA --netG unet_256 --input_nc 3 --direction AtoB --dataset_mode cataract --norm batch --batch_size 8 --n_epochs 150 --n_epochs_decay 50
+python --dataroot ./datasets/dataset_name --name train_project --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --batch_size 8 --n_epochs 150 --n_epochs_decay 50 --input_nc 6 --output_nc 3```
 ```
 
 ### test
 
 ```
-python test.py --dataroot ./datasets/cataract_0830 --name train_project --model pixDA --netG unet_256 --input_nc 3 --direction AtoB --dataset_mode cataract --norm batch --explanation train_project --num_test 126
+python test.py --dataroot ./datasets/dataset_name --name train_project --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --input_nc 6 --output_nc 3
 ```
 
-### eval
-
-```
-python eval.py --dataroot ./datasets/cataract_0830 --name train_project --model pixDA --netG unet_256 --input_nc 3 --direction AtoB --dataset_mode cataract --norm batch --explanation train_project --num_test 126
-```
 
 # Reference
 

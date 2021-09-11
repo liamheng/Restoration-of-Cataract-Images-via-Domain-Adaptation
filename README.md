@@ -50,16 +50,3 @@ python --dataroot ./datasets/dataset_name --name train_project --model pixDA_sob
 ```
 python test.py --dataroot ./datasets/dataset_name --name train_project --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --input_nc 6 --output_nc 3
 ```
-
-
-# Reference
-
-[1]Jun Cheng et al.,   “Structure-preserving guided retinal image filtering and its application for optic disk analysis,”IEEE TMI, vol. 37, no. 11, pp. 2536–2546, 2018.
-
-[2]Phillip  Isola  et  al.,  “Image-to-image  translation  with conditional adversarial networks,”  in CVPR, 2017, pp.1125–1134.
-
-[3]Yu hao  Luo  et  al.,   “Dehaze  of  cataractous  retinal  images using an unpaired generative adversarial network,”JBHI, 2020.
-
-[4]Ziyi  Shen  et  al.,   “Understanding  and  correcting  low-quality  retinal  fundus  images  for  clinical  analysis,” arXiv preprint arXiv:2005.05594, 2020.
-
-[5]Heng Li et al.,  “Restoration of cataract fundus images via  unsupervised  domain  adaptation,”   in ISBI.  IEEE,2021, pp. 516–520.

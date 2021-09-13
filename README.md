@@ -3,11 +3,14 @@ There is little access to large datasets of cataract images paired with their co
 
 Here, we propose an unsupervised restoration method via cataract-like image simulation and domain adaptation.
 
-The code of this study will be released soon.
+The code of "An Annotation-free Restoration Network for Cataractous Fundus Images" will be in this repository released soon.
+
+The code of "Domain Generalization in Restoration of Cataract Fundus Images via High-frequency Components" will be in [Restoration-of-Cataract-Images-via-Domain-Generalization](https://github.com/HeverLaw/Restoration-of-Cataract-Images-via-Domain-Generalization).
 
 **Result：**
 ![Output](images/Output.png)
 A comparison of the restored fundus images. (a) cataract image. (b) clear fundus image after surgery. (c) dark channel prior. (d) SGRIF. (e) pix2pix. (f) CycleGAN. (g) the proposed method.
+
 ## Prerequisites
 
 \- Win10

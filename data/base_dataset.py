@@ -71,17 +71,14 @@ def get_params(opt, size, is_source=True):
     new_w = w
     if opt.preprocess == 'resize_and_crop':
         # TODO:添加数组的尺寸来随机挑选，target只随机裁286
-        if is_source:
-            if opt.source_size_count == 1:
-                new_h = new_w = 326
-            else:
-                if not opt.isTrain:
-                    new_h = new_w = opt.load_size
-                else:
-                    new_h = new_w = random.choice([286, 306, 326, 346])
-            # new_h = new_w = random.choice([opt.load_source_size, opt.load_target_size])
-        else:
+        if opt.source_size_count == 1:
             new_h = new_w = opt.load_size
+        else:
+            if not opt.isTrain:
+                new_h = new_w = opt.load_size
+            else:
+                new_h = new_w = random.choice([286, 306, 326, 346])
+            # new_h = new_w = random.choice([opt.load_source_size, opt.load_target_size])
     elif opt.preprocess == 'scale_width_and_crop':
         new_w = opt.load_size
         new_h = opt.load_size * h // w
@@ -141,6 +138,61 @@ def get_transform(opt, params=None, grayscale=False, method=Image.BICUBIC, conve
     return transforms.Compose(transform_list)
 
 
+def get_transform_six_channel(opt, params=None, grayscale=False, method=Image.BICUBIC, convert=True):
+    transform_list = []
+    mask_transform_list = []
+    if 'resize' in opt.preprocess:
+        if params is None:
+            osize = [opt.load_size, opt.load_size]
+        else:
+            load_size = params['load_size']
+            osize = [load_size, load_size]
+        transform_list.append(transforms.Resize(osize, method))
+        mask_transform_list.append(transforms.Resize(osize, method))
+    elif 'scale_width' in opt.preprocess:
+        transform_list.append(transforms.Lambda(lambda img: __scale_width(img, opt.load_size, opt.crop_size, method)))
+        mask_transform_list.append(transforms.Lambda(lambda img: __scale_width(img, opt.load_size, opt.crop_size, method)))
+
+    if 'crop' in opt.preprocess:
+        if params is None:
+            transform_list.append(transforms.RandomCrop(opt.crop_size))
+            mask_transform_list.append(transforms.RandomCrop(opt.crop_size))
+        else:
+            transform_list.append(transforms.Lambda(lambda img: __crop(img, params['crop_pos'], opt.crop_size)))
+            mask_transform_list.append(transforms.Lambda(lambda img: __crop(img, params['crop_pos'], opt.crop_size)))
+
+    if opt.preprocess == 'none':
+        transform_list.append(transforms.Lambda(lambda img: __make_power_2(img, base=4, method=method)))
+        mask_transform_list.append(transforms.Lambda(lambda img: __make_power_2(img, base=4, method=method)))
+
+    if not opt.no_flip:
+        if params is None:
+            transform_list.append(transforms.RandomHorizontalFlip())
+            mask_transform_list.append(transforms.RandomHorizontalFlip())
+
+        elif params['flip']:
+            transform_list.append(transforms.Lambda(lambda img: __flip(img, params['flip'])))
+            mask_transform_list.append(transforms.Lambda(lambda img: __flip(img, params['flip'])))
+
+    # 加入上下翻转
+    if not opt.no_flip:
+        if params is None:
+            transform_list.append(transforms.RandomVerticalFlip())
+            mask_transform_list.append(transforms.RandomVerticalFlip())
+        elif params['flip']:
+            transform_list.append(transforms.Lambda(lambda img: __flip_vertical(img, params['flip_vertical'])))
+            mask_transform_list.append(transforms.Lambda(lambda img: __flip_vertical(img, params['flip_vertical'])))
+    if convert:
+        transform_list += [transforms.ToTensor()]
+        mask_transform_list += [transforms.ToTensor()]
+        if grayscale:
+            transform_list += [transforms.Normalize((0.5,), (0.5,))]
+        else:
+            transform_list += [transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+
+    return transforms.Compose(transform_list), transforms.Compose(mask_transform_list)
+
+
 def get_gray_transform(opt, params=None, grayscale=False, method=Image.BICUBIC, convert=True):
     transform_list = []
     gray_transform_list = []
@@ -148,7 +200,6 @@ def get_gray_transform(opt, params=None, grayscale=False, method=Image.BICUBIC, 
         transform_list.append(transforms.Grayscale(1))
 
     if 'resize' in opt.preprocess:
-        # TODO:resize需要优化，此处只考虑params没有时直接取target的
         if params is None:
             osize = [opt.load_size, opt.load_size]
         else:

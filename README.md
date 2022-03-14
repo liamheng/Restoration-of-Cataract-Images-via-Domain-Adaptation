@@ -13,11 +13,10 @@ A comparison of the restored fundus images. (a) cataract image. (b) clear fundus
 
 
 
-Heng Li, Haofeng Liu, Yan Hu, Huazhu Fu, Yitian Zhao, Jiang Liu. An Annotation-free Restoration Network for Cataractous Fundus Images, under review.
-
+Li H, Liu H, Hu Y, et al. An Annotation-free Restoration Network for Cataractous Fundus Images[J]. IEEE Transactions on Medical Imaging, 2022.
 ![arcnet](./images/arcnet.png)
 
-Visual comparison of images restored from cataract ones. (a) cataract image. (b) clear fundus image after surgery. (c) Mitra et al. [1]. (d)SGRIF [2]. (e) Cao et al. [3]. (f) pix2pix [4]. (g) CycleGAN [5]. (h) Luo et al. [6]. (i) CofeNet [7]. (j) ours [9].
+Visual comparison of images restored from cataract ones. (a) cataract image. (b) clear fundus image after surgery. (c) Mitra et al. [1]. (d)SGRIF [2]. (e) Cao et al. [3]. (f) pix2pix [4]. (g) CycleGAN [5]. (h) Luo et al. [6]. (i) CofeNet [7]. (j) ArcNet [10].
 
 # Prerequisites
 
@@ -116,11 +115,17 @@ python test.py --dataroot ./images/cataract_dataset --name arcnet --model arcnet
 
 [8] Li H ,  Liu H ,  Hu Y , et al. Restoration Of Cataract Fundus Images Via Unsupervised Domain Adaptation[C]// 2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI). IEEE, 2021.
 
-[9] Heng Li, Haofeng Liu, Yan Hu, Huazhu Fu, Yitian Zhao, Jiang Liu. An Annotation-free Restoration Network for Cataractous Fundus Images, under review.
-
+[9] Li H, Liu H, Hu Y, et al. An Annotation-free Restoration Network for Cataractous Fundus Images[J]. IEEE Transactions on Medical Imaging, 2022.
 # Citation
 
 ```
+@article{li2022annotation,
+  title={An Annotation-free Restoration Network for Cataractous Fundus Images},
+  author={Li, Heng and Liu, Haofeng and Hu, Yan and Fu, Huazhu and Zhao, Yitian and Miao, Hanpei and Liu, Jiang},
+  journal={IEEE Transactions on Medical Imaging},
+  year={2022},
+  publisher={IEEE}
+}
 @inproceedings{li2021restoration,
   title={Restoration Of Cataract Fundus Images Via Unsupervised Domain Adaptation},
   author={Li, Heng and Liu, Haofeng and Hu, Yan and Higashita, Risa and Zhao, Yitian and Qi, Hong and Liu, Jiang},

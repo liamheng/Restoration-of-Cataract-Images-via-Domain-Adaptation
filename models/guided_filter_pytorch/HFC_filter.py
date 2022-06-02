@@ -22,7 +22,7 @@ class HFCFilter(nn.Module):
         self.avg_pool = torch.nn.AvgPool2d(2, stride=2)
         self.max = 1.0
         self.min = -1.0
-        self.ratio = 4
+        self.ratio = ratio
         self.sub_low_ratio = sub_low_ratio
         self.sub_mask = sub_mask
         self.is_clamp = is_clamp

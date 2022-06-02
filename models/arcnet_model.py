@@ -22,7 +22,7 @@ class ArcNetModel(BaseModel):
         if is_train:
             parser.set_defaults(pool_size=0, gan_mode='vanilla')
             parser.add_argument('--lambda_L1', type=float, default=100.0, help='weight for L1 loss')
-            parser.add_argument('--lambda_L1G', type=float, default=50.0, help='weight for L1G loss')
+            parser.add_argument('--lambda_L1G', type=float, default=100.0, help='weight for L1G loss')
             parser.add_argument('--lambda_DDP', type=float, default=1, help='weight for DDP')
             parser.add_argument('--lambda_DP', type=float, default=1, help='weight for G loss')
 

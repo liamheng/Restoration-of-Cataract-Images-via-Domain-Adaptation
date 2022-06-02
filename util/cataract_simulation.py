@@ -16,6 +16,8 @@ from PIL import Image, ImageEnhance
 IMAGE_DIR = '../images/original_image'
 OUTPUT_DIR = '../images/simulation_image'
 # number of cataract-like per clean image
+IMAGE_DIR = r'D:\Project\Data&Aug\dataset\kaggle_cataract\normal_select_resize_circle'
+OUTPUT_DIR = r'D:\Project\Data&Aug\dataset\kaggle_cataract\TMI_public_circle_source'
 NUM_PER_NOISE = 16
 IMG_SIZE = (512, 512)
 

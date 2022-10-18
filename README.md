@@ -59,7 +59,9 @@ For the model of "Restoration Of Cataract Fundus Images Via Unsupervised Domain 
 
 https://drive.google.com/file/d/1Ystqt3RQVfIPPukE7ZdzzFM_hBqB0lr0/view?usp=sharing
 
-Then, place the document in project_root/checkpoints/cataract_model, so that we can get the file like project_root/checkpoints/cataract_model/latest_net_G.pth
+or use link: https://pan.baidu.com/s/1Ax18-10dpJDToieqvcXGxQ , code: ak7c
+
+Then, place the document in project_root/checkpoints/pixDA_sobel, so that we can get the file like project_root/checkpoints/cataract_model/latest_net_G.pth
 
 
 
@@ -67,7 +69,9 @@ For the model of "An Annotation-free Restoration Network for Cataractous Fundus 
 
 https://drive.google.com/file/d/1eEzCbKPfKu72UqPBfk3OBUSi-a93T0eg/view?usp=sharing
 
-Then, place the document in project_root/checkpoints/cataract_model, so that we can get the file like project_root/checkpoints/arcnet/latest_net_G.pth
+or use link: https://pan.baidu.com/s/176ZWtgoSZGDFw2NQEFzs6g , code: vzti
+
+Then, place the document in project_root/checkpoints/arcnet, so that we can get the file like project_root/checkpoints/arcnet/latest_net_G.pth
 
 # Command to run
 
@@ -76,25 +80,25 @@ Please note that root directory is the project root directory.
 ## Train
 
 ```
-python train.py --dataroot ./datasets/dataset_name --name train_project --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --batch_size 8 --n_epochs 150 --n_epochs_decay 50 --input_nc 6 --output_nc 3
+python train.py --dataroot ./datasets/cataract_dataset --name train_pixDA_sobel --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --batch_size 8 --n_epochs 150 --n_epochs_decay 50 --input_nc 6 --output_nc 3
 ```
 
 or
 
 ```
-python train.py --dataroot ./images/cataract_dataset --name arcnet --model arcnet --netG unet_256 --input_nc 6 --direction AtoB --dataset_mode cataract_guide_padding --norm batch --batch_size 8 --lr_policy step --n_epochs 100 --n_epochs_decay 0 --lr_decay_iters 80 --gpu_ids 0
+python train.py --dataroot ./images/cataract_dataset --name train_arcnet --model arcnet --netG unet_256 --input_nc 6 --direction AtoB --dataset_mode cataract_guide_padding --norm batch --batch_size 8 --lr_policy step --n_epochs 100 --n_epochs_decay 0 --lr_decay_iters 80
 ```
 
 ## Test & Visualization
 
 ```
-python test.py --dataroot ./datasets/dataset_name --name train_project --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --input_nc 6 --output_nc 3
+python test.py --dataroot ./datasets/cataract_dataset --name pixDA_sobel --model pixDA_sobel --netG unet_256 --direction AtoB --dataset_mode cataract --norm batch --input_nc 6 --output_nc 3
 ```
 
 or
 
 ```
-python test.py --dataroot ./images/cataract_dataset --name arcnet --model arcnet --netG unet_256 --input_nc 6 --direction AtoB --dataset_mode cataract_guide_padding --norm batch --gpu_ids 0
+python test.py --dataroot ./images/cataract_dataset --name arcnet --model arcnet --netG unet_256 --input_nc 6 --direction AtoB --dataset_mode cataract_guide_padding --norm batch
 ```
 
 # Reference
